@@ -1,0 +1,28 @@
+﻿<Window x:Class="XMusCringleW.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XMusCringleW"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="226" Width="208">
+    <Window.DataContext>
+        <Binding Path="Main.Menu" Source="{StaticResource Locator}"/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="181*"/>
+            <ColumnDefinition Width="11*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="78*"/>
+        </Grid.RowDefinitions>
+        <Button Content="New Save File" Command="{Binding NewCommand, Mode=OneWay}" Margin="0,10,0,0" Grid.Column="1" />
+        <Button Content="Open Save File" Command="{Binding OpenFileCommand, Mode=OneWay}" Grid.Row="1" Margin="0,10,0,0" Grid.Column="1"/>
+        <Button Name="butPeople" Command="{Binding PeopleCommand, Mode=OneWay}" Content="People List" IsEnabled="{Binding EnableButtons}" Grid.Row="2" Margin="0,10,0,0" Grid.Column="1" Click="butPeople_Click" />
+    </Grid>
+</Window>

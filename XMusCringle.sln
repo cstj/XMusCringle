@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMusCringle", "XMusCringle\XMusCringle.csproj", "{E40942B4-A79E-4C76-BEB0-672B1632474C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7A535BDC-F87B-4C5C-9F0D-2B37D2487D76}"
+	ProjectSection(SolutionItems) = preProject
+		CringleDBClass.cs = CringleDBClass.cs
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMusCringleLib", "XMusCringleLib\XMusCringleLib.csproj", "{4727AC29-D207-4220-B4BF-18A9291A53B0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{60B229BC-ACC6-4F5A-845E-054DF651FF90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMusCringleW", "XMusCringleW\XMusCringleW.csproj", "{94D13368-C771-4A11-A17F-314B10E3F0BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E40942B4-A79E-4C76-BEB0-672B1632474C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E40942B4-A79E-4C76-BEB0-672B1632474C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E40942B4-A79E-4C76-BEB0-672B1632474C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E40942B4-A79E-4C76-BEB0-672B1632474C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4727AC29-D207-4220-B4BF-18A9291A53B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4727AC29-D207-4220-B4BF-18A9291A53B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4727AC29-D207-4220-B4BF-18A9291A53B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4727AC29-D207-4220-B4BF-18A9291A53B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94D13368-C771-4A11-A17F-314B10E3F0BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94D13368-C771-4A11-A17F-314B10E3F0BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94D13368-C771-4A11-A17F-314B10E3F0BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94D13368-C771-4A11-A17F-314B10E3F0BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
