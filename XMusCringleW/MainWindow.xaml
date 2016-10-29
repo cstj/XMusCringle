@@ -11,18 +11,19 @@
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="8*"/>
-            <ColumnDefinition Width="181*"/>
-            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="45"/>
+            <RowDefinition Height="35"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="78*"/>
         </Grid.RowDefinitions>
-        <Button Content="New Save File" Command="{Binding NewCommand, Mode=OneWay}" Margin="0,10,0,0" Grid.Column="1" />
-        <Button Content="Open Save File" Command="{Binding OpenFileCommand, Mode=OneWay}" Grid.Row="1" Margin="0,10,0,0" Grid.Column="1"/>
-        <Button Name="butPeople" Command="{Binding PeopleCommand, Mode=OneWay}" Content="People List" IsEnabled="{Binding EnableButtons}" Grid.Row="2" Margin="0,10,0,0" Grid.Column="1" Click="butPeople_Click" />
+        <Button Content="New Save File" Command="{Binding NewCommand, Mode=OneWay}" Margin="0,10,10,0" Grid.Column="1" />
+        <Button Content="Open Save File" Command="{Binding OpenFileCommand, Mode=OneWay}" Margin="0,10,0,0" Grid.Column="2"/>
+        <Button Name="butPeople" Content="People List" IsEnabled="{Binding EnableButtons}" Grid.Row="1" Margin="0,10,0,0" Grid.Column="1" Click="butPeople_Click" Grid.ColumnSpan="2" />
     </Grid>
 </Window>

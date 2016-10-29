@@ -5,21 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XMusCringleW.Views"
         mc:Ignorable="d"
-        Title="People" Height="300" Width="300">
+        Title="People" Height="300" Width="423.227">
     <Window.DataContext>
         <Binding Path="Main.People" Source="{StaticResource Locator}"/>
     </Window.DataContext>
     <Grid>
-        <ListBox ItemsSource="{Binding PeopleList}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBox Text="{Binding OName}" />
-                        <TextBlock Text="Partner: " />
-                        <TextBox Text="{Binding Partner.OName }" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <ListView ItemsSource="{Binding PeopleList}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Name">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Width="150" Text="{Binding OName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Partner">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox Width="150" ItemsSource="{Binding PartnerList}" SelectedItem="{Binding Partner}" DisplayMemberPath="Name"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

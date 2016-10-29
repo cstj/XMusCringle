@@ -27,6 +27,8 @@ namespace XMusCringleW
 
         private void butPeople_Click(object sender, RoutedEventArgs e)
         {
+            var d = this.DataContext as XMusCringleLib.Viewmodels.Menu;
+            d.PeopleCommand.Execute(null);
             XMusCringleW.Views.People p = new Views.People();
             p.ShowDialog();
         }

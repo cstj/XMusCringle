@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Cryptography;
 using System.Text;
+using System.Linq;
 
 
 namespace XMusCringleLib.Model
@@ -67,6 +68,13 @@ namespace XMusCringleLib.Model
     [Table("People")]
     public class Person : Classes.ViewModelBase
     {
+        public Person()
+        {
+            PropertyChanged += Person_PropertyChanged;
+            db = null;
+        }
+
+        #region DB Columns
         [Key]
         public Int64 PersonID { get; set; }
         public const string OPersonIDName = "OPersonID";
@@ -128,8 +136,66 @@ namespace XMusCringleLib.Model
 
         [ForeignKey("PartnerID")]
         public virtual Person Partner { get; set; }
+        public const string OPartnerName = "OPartner";
+        [NotMapped]
+        public Person OPartner
+        {
+            get { return Partner; }
+            set
+            {
+                if (Partner == value) return;
+                Partner = value;
+                RaisePropertyChanged(OPartnerName);
+            }
+        }
+        #endregion
 
-        
+        private void Person_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (db != null)
+            {
+                switch (e.PropertyName)
+                {
+                    case dbName:
+                        //Change partner list to not include the current partner or the current person
+                        List<Person> tmpList = db.People.Where(d => d.PersonID != this.PersonID).ToList();
+                        PartnerList = tmpList;
+                        break;
+                }
+            }
+        }
+
+        public const string dbName = "db";
+        [NotMapped]
+        private XMusCringleContext _db;
+        [NotMapped]
+        public XMusCringleContext db
+        {
+            get { return _db; }
+            set
+            {
+                if (_db == value) return;
+                _db = value;
+                RaisePropertyChanged(dbName);
+            }
+        }
+
+        public const string PartnerListName = "PartnerList";
+        [NotMapped]
+        private List<Person> _PartnerList;
+        [NotMapped]
+        public List<Person> PartnerList
+        {
+            get { return _PartnerList; }
+            set
+            {
+                if (_PartnerList == value) return;
+                _PartnerList = value;
+                RaisePropertyChanged(PartnerListName);
+            }
+        }
+
+
     }
 
     [Table("CringleDraw")]

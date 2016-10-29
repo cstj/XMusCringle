@@ -44,7 +44,7 @@ namespace XMusCringleLib.Viewmodels
         {
             db = main.GetDBContext();
             PeopleList = new ObservableCollection<Model.Person>(db.People.ToList());
-            
+            foreach (var p in PeopleList) p.db = db;
         }
     }
 }
