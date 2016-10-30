@@ -15,20 +15,28 @@ using System.Windows.Shapes;
 namespace XMusCringleW.Views
 {
     /// <summary>
-    /// Interaction logic for People.xaml
+    /// Interaction logic for Cringle.xaml
     /// </summary>
-    public partial class People : Window
+    public partial class Cringle : Window
     {
-        public People()
+        public Cringle()
         {
             InitializeComponent();
         }
 
         private void butClose_Click(object sender, RoutedEventArgs e)
         {
-            var d = DataContext as XMusCringleLib.Viewmodels.People;
+            var d = DataContext as XMusCringleLib.Viewmodels.Cringle;
             d.CloseCommand.Execute(null);
             this.Close();
+        }
+
+        private void butNewCringle_Click(object sender, RoutedEventArgs e)
+        {
+            var d = DataContext as XMusCringleLib.Viewmodels.Cringle;
+            d.NewCringleCommand.Execute(null);
+            Views.NewCringle w = new NewCringle();
+            w.ShowDialog();
         }
     }
 }

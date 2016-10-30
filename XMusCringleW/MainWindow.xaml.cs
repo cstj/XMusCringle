@@ -32,5 +32,13 @@ namespace XMusCringleW
             XMusCringleW.Views.People p = new Views.People();
             p.ShowDialog();
         }
+
+        private void butCringle_Click(object sender, RoutedEventArgs e)
+        {
+            var d = this.DataContext as XMusCringleLib.Viewmodels.Menu;
+            d.RunCringleCommand.Execute(null);
+            XMusCringleW.Views.Cringle p = new Views.Cringle();
+            p.ShowDialog();
+        }
     }
 }

@@ -22,17 +22,5 @@ namespace XMusCringleW.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LastOpenDirectory {
-            get {
-                return ((string)(this["LastOpenDirectory"]));
-            }
-            set {
-                this["LastOpenDirectory"] = value;
-            }
-        }
     }
 }

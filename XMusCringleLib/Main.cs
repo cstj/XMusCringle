@@ -45,6 +45,16 @@ namespace XMusCringleLib
             }
         }
 
+        private NewCringle _NewCringle;
+        public NewCringle NewCringle
+        {
+            get
+            {
+                if (_NewCringle == null) _NewCringle = new NewCringle(this);
+                return _NewCringle;
+            }
+        }
+
         private Menu _Menu;
         public Menu Menu
         {

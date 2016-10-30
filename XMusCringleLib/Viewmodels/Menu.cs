@@ -19,6 +19,7 @@ namespace XMusCringleLib.Viewmodels
             OpenFileCommand = new RelayCommand(OpenFileExecute);
             NewCommand = new RelayCommand(NewExecute);
             PeopleCommand = new RelayCommand(PeopleExecute);
+            RunCringleCommand = new RelayCommand(RungCringleExecute);
         }
 
         public const string EnableButtonsName = "EnableButtons";
@@ -59,7 +60,7 @@ namespace XMusCringleLib.Viewmodels
             }
         }
 
-        private void OpenFile(String fileName)
+        public void OpenFile(String fileName)
         {
             try
             {
@@ -95,7 +96,7 @@ namespace XMusCringleLib.Viewmodels
             {
                 //Copy base file into saved filename given
                 String source = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "base.cringle");
-                System.IO.File.Copy(source, sfd.FileName);
+                System.IO.File.Copy(source, sfd.FileName, true);
                 //Open file
                 OpenFile(sfd.FileName);
             }
@@ -105,6 +106,12 @@ namespace XMusCringleLib.Viewmodels
         private void PeopleExecute()
         {
             main.People.Refresh();
+        }
+
+        public RelayCommand RunCringleCommand { get; private set; }
+        private void RungCringleExecute()
+        {
+            main.Cringle.Refresh();
         }
     }
 }

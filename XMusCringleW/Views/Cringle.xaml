@@ -1,0 +1,73 @@
+﻿<Window x:Class="XMusCringleW.Views.Cringle"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XMusCringleW.Views"
+        mc:Ignorable="d"
+        Title="Cringle" Height="400" Width="609.374">
+    <Window.DataContext>
+        <Binding Path="Main.Cringle" Source="{StaticResource Locator}"/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="71"/>
+            <RowDefinition/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="67*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="76*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Button Name="butNewCringle" Command="{Binding NewCringleCommand}" Content="New" Margin="0,10,0,0" Grid.Row="4" Grid.Column="1" Click="butNewCringle_Click"/>
+        <Button x:Name="button_Copy" Content="Delete" Margin="0,10,0,0" Grid.Row="5" Grid.Column="1"/>
+        <ListView ItemsSource="{Binding CringleList}" SelectedItem="{Binding CurrentCringle}" Grid.Column="1" Grid.RowSpan="4" Margin="0,10,0,0">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Cringle" DisplayMemberBinding="{Binding OCringleName}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Command="{Binding EmailSelectedCommand}" Content="Send Email (Selected)" Margin="0,10,0,0" Grid.Row="5" Grid.Column="3"/>
+        <TextBox Text="{Binding CurrentCringle.OAmount, UpdateSourceTrigger=PropertyChanged}" Grid.Column="3" Margin="71,13,0,3" Grid.Row="4" TextWrapping="Wrap"/>
+        <Label Content="Amount $" Grid.Column="3" HorizontalAlignment="Left" Margin="0,10,0,0" Grid.Row="4" Width="71"/>
+        <ListView ItemsSource="{Binding DrawPeople}" Grid.Column="3" Grid.RowSpan="4" Margin="0,10,0,0">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay}" />
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="People in Cringle" DisplayMemberBinding="{Binding OName}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox Grid.Column="5" Margin="93,13,0,3" TextWrapping="Wrap" Text="{Binding CurrentCringle.OCringleName, UpdateSourceTrigger=PropertyChanged}" Grid.ColumnSpan="5"/>
+        <Label Content="Cringle Name" Grid.Column="5" HorizontalAlignment="Left" Margin="0,10,0,0" Width="93"/>
+        <Label Content="Cover Letter&#xD;&#xA;%Name% - Persons Name, %Draw% - Drawn Name&#xD;&#xA;%Amount% - Cringle Amount" Grid.Column="5" HorizontalAlignment="Left" Width="258" Grid.Row="1" Margin="0,10,0,0" Grid.ColumnSpan="5"/>
+        <TextBox AcceptsReturn="True" Text="{Binding CurrentCringle.OCoverLetter, UpdateSourceTrigger=PropertyChanged}" Grid.Column="5" TextWrapping="Wrap" Grid.Row="2" Grid.RowSpan="3" Grid.ColumnSpan="5"/>
+        <Button Command="{Binding EmailAllCommand}" Content="Send Email (All)" Margin="0,10,0,0" Grid.Row="5" Grid.Column="5"/>
+        <Button Command="{Binding SaveChangesCommand}" Content="Save" Margin="0,10,0,0" Grid.Row="5" Grid.Column="7"/>
+        <Button Name="butClose" Content="Close" Margin="0,10,9,0" Grid.Row="5" Grid.Column="9" Click="butClose_Click"/>
+
+    </Grid>
+</Window>

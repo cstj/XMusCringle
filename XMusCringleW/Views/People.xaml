@@ -5,30 +5,64 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XMusCringleW.Views"
         mc:Ignorable="d"
-        Title="People" Height="300" Width="423.227">
+        Title="People" Height="300" Width="834.227">
     <Window.DataContext>
         <Binding Path="Main.People" Source="{StaticResource Locator}"/>
     </Window.DataContext>
     <Grid>
-        <ListView ItemsSource="{Binding PeopleList}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="413*"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="249*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+        <ListView ItemsSource="{Binding PeopleList}" Grid.ColumnSpan="5" Margin="0,0,0,10">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name">
+                    <GridViewColumn Width="170" Header="Name">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <TextBox Width="150" Text="{Binding OName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="Partner">
+                    <GridViewColumn Width="220" Header="Email">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <ComboBox Width="150" ItemsSource="{Binding PartnerList}" SelectedItem="{Binding Partner}" DisplayMemberPath="Name"/>
+                                <TextBox Width="200" Text="{Binding OEmail, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="170" Header="Partner">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox Width="150" ItemsSource="{Binding PartnerList}" SelectedItem="{Binding OPartner}" DisplayMemberPath="OName"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="100" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding RemovePartnerCommand}" Content="Rem Partner" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="100" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding DeletePersonCommand}" Content="Delete Person" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button Command="{Binding SaveChangesCommand}" Content="Save Changes" Grid.Column="1" Grid.Row="1" Margin="0,0,0,10"/>
+        <Button Name="butClose" Content="Close" Grid.Column="3" Grid.Row="1" Margin="0,0,0,10" Click="butClose_Click"/>
     </Grid>
 </Window>

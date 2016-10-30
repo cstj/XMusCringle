@@ -52,7 +52,6 @@
             this.butNew.TabIndex = 0;
             this.butNew.Text = "New";
             this.butNew.UseVisualStyleBackColor = true;
-            this.butNew.Click += new System.EventHandler(this.butNew_Click);
             // 
             // listYears
             // 
@@ -62,7 +61,6 @@
             this.listYears.Size = new System.Drawing.Size(87, 251);
             this.listYears.Sorted = true;
             this.listYears.TabIndex = 3;
-            this.listYears.SelectedIndexChanged += new System.EventHandler(this.listYears_SelectedIndexChanged);
             // 
             // butDelete
             // 
@@ -72,7 +70,6 @@
             this.butDelete.TabIndex = 4;
             this.butDelete.Text = "Delete";
             this.butDelete.UseVisualStyleBackColor = true;
-            this.butDelete.Click += new System.EventHandler(this.butDelete_Click);
             // 
             // listDraw
             // 
@@ -196,6 +193,7 @@
             this.Controls.Add(this.butNew);
             this.Name = "CringleForm";
             this.Text = "Cringle Draws";
+            this.Load += new System.EventHandler(this.CringleForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
